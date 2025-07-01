@@ -9,7 +9,7 @@ const PORT = process.env.PORT
 // Middlewares
 // Reemplaza con tu dominio real de Netlify al final
 app.use(cors({
-  origin: ['https://tu-sitio.netlify.app'],
+  origin: ['https://floreriaa.netlify.app'],
   credentials: true
 }))
 app.use(express.json())
