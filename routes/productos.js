@@ -1,15 +1,14 @@
-const express = require('express')
-const router = express.Router()
-const pool = require('../db')
+// 📄 routes/productos.js
+import express from 'express'
+import pool from '../db.js'
 
-// Ruta principal con filtros múltiples
+const router = express.Router()
+
+// ✅ Ruta con filtros múltiples
 router.get('/', async (req, res) => {
   try {
     let { temporada_flor, origen } = req.query
-    
-// ✅ Agregar nuevo producto tipo_cerveza
 
-    // Asegurarse de que temporada_flor y origen sean arrays
     temporada_flor = Array.isArray(temporada_flor) ? temporada_flor : temporada_flor ? [temporada_flor] : []
     origen = Array.isArray(origen) ? origen : origen ? [origen] : []
 
@@ -36,7 +35,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// 🔍 NUEVA RUTA: Búsqueda por nombre, tipo, origen o país
+// ✅ Buscar productos por texto
 router.get('/buscar', async (req, res) => {
   const { q } = req.query
 
@@ -61,7 +60,7 @@ router.get('/buscar', async (req, res) => {
   }
 })
 
-// Obtener producto por ID
+// ✅ Obtener producto por ID
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
@@ -76,5 +75,4 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-module.exports = router
-
+export default router
