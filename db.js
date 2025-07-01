@@ -1,7 +1,8 @@
-import pkg from 'pg';
-const { Pool } = pkg;
-import dotenv from 'dotenv';
-dotenv.config();
+// db.js
+import pkg from 'pg'
+const { Pool } = pkg
+import dotenv from 'dotenv'
+dotenv.config()
 
 const pool = new Pool({
   host: process.env.PGHOST,
@@ -9,8 +10,9 @@ const pool = new Pool({
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
   port: process.env.PGPORT,
-  ssl: { rejectUnauthorized: false } // necesario en Render
-});
+  ssl: {
+    rejectUnauthorized: false
+  }
+})
 
-export default pool;
-
+export default pool
